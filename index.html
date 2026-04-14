@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shopping Mall</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* HEADER */
+header {
+    background: #222;
+    color: white;
+    padding: 15px;
+    text-align: center;
+}
+
+/* NAVBAR */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #444;
+    padding: 10px;
+    flex-wrap: wrap;
+}
+
+nav .links a {
+    color: white;
+    margin: 10px;
+    text-decoration: none;
+}
+
+nav .cart {
+    color: yellow;
+    font-weight: bold;
+}
+
+/* BANNER */
+.banner {
+    height: 250px;
+    background: url('https://images.unsplash.com/photo-1519567241046-7f570eee3ce6?q=80&w=1200') center/cover;
+}
+
+/* CONTAINER */
+.container {
+    padding: 20px;
+}
+
+/* SHOP GRID */
+.shops {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.shop-card {
+    width: 250px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+}
+
+.shop-card img {
+    width: 100%;
+}
+
+button {
+    background: green;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+/* MOBILE RESPONSIVE */
+@media (max-width: 600px) {
+    nav {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .shops {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .shop-card {
+        width: 90%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>City Shopping Mall</h1>
+</header>
+
+<nav>
+    <div class="links">
+        <a href="#">Home</a>
+    </div>
+    <div class="cart">Cart: <span id="cartCount">0</span></div>
+</nav>
+
+<div class="banner"></div>
+
+<!-- HOME SECTION -->
+<div class="container">
+    <h2>Stores</h2>
+    <div class="shops">
+
+        <div class="shop-card">
+            <img src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?q=80&w=500" alt="T-Shirt">
+            <h3>T-Shirt</h3>
+            <p>₹500</p>
+            <button onclick="addToCart()">Add to Cart</button>
+        </div>
+
+        <div class="shop-card">
+		<img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=500" alt="Headphones">
+            <h3>Headphones</h3>
+            <p>₹1500</p>
+            <button onclick="addToCart()">Add to Cart</button>
+        </div>
+
+        <div class="shop-card">
+            <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=500" alt="Shoes">
+            <h3>Shoes</h3>
+            <p>₹2000</p>
+            <button onclick="addToCart()">Add to Cart</button>
+        </div>
+
+    </div>
+
+    <button onclick="checkout()">Checkout</button>
+</div>
+
+<script>
+let cart = 0;
+
+function addToCart() {
+    cart++;
+    document.getElementById("cartCount").innerText = cart;
+}
+
+function checkout() {
+    if(cart === 0){
+        alert("Cart is empty!");
+    } else {
+        alert("Order placed for " + cart + " items!");
+        cart = 0;
+        document.getElementById("cartCount").innerText = cart;
+    }
+}
+</script>
+
+</body>
+</html>
